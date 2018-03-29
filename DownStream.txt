@@ -10,29 +10,29 @@ symmetries:reflect_horizontal
 
 # C,N,NE,E,SE,S,SW,W,NW,C'
 
-var a={0,1,2,3,4,5,6}
-var b={0,1,2,3,4,5,6}
-var c={0,1,2,3,4,5,6}
-var d={0,1,2,3,4,5,6}
-var e={0,1,2,3,4,5,6}
-var f={0,1,2,3,4,5,6}
-var g={0,1,2,3,4,5,6}
-var h={2,3}
-var i={1,4,5,6}
-var j={0,1,4,5,6}
-var k={0,1,4,5,6}
-var l={0,1,4,5,6}
-var m={0,2,3}
-var n={0,1,2,3,4,6}
+var a={0,1,2,3} # anything
+var b={0,1,2,3}
+var c={0,1,2,3}
+var d={0,1,2,3}
+var e={0,1,2,3}
+var f={0,1,2,3}
+var g={0,1,2,3}
+var h={1,3}     # solid
+var i={0,1,3}   # non-water
+var j={0,1,3}
+var k={0,1,3}
+var l={0,2}     # fluid
+var m={0,2}
+var n={0,1,2}	# non-active gate
 
 # Water spreads down or sideways.
-0,h,a,b,c,n,e,f,g,2
-0,a,b,h,i,n,d,e,f,2
+0,2,a,b,c,d,e,f,g,2
+0,a,b,2,h,c,d,e,f,2
 
 # Water dries up if not replenished.
-2,j,a,k,b,n,d,l,e,0
-2,j,a,b,m,n,d,k,e,0
-2,j,a,b,m,n,m,d,e,0
+2,i,a,j,b,c,d,k,e,0
+2,i,a,j,b,c,l,d,e,0
+2,i,a,b,l,c,m,d,e,0
 
 # Gates rise if there is water below them.
 4,a,b,c,d,h,e,f,g,5
@@ -47,19 +47,14 @@ m,a,b,c,d,5,e,f,g,6
 0 empty
 1 wall
 2 water
-3 spout
-4 inactive gate
-5 active gate
-6 gate wall
+3 inactive gate
+4 active gate
 
 @COLORS
 
 0 255 255 255   white
 1   0   0   0   black
 2   0 128 255   light blue
-3   0   0 255   blue
-4 255   0   0   red
-5 255 128   0   orange
-6 255 128   0   orange
+3 255 128   0   orange
 
 
