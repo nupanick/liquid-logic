@@ -1,0 +1,65 @@
+@RULE DownStream
+
+Designed by Nicholas Lamicela in April 2016 to simulate gravity-based logic. Inspired by Minecraft water flow mechanics.
+
+@TABLE
+
+n_states:7
+neighborhood:Moore
+symmetries:reflect_horizontal
+
+# C,N,NE,E,SE,S,SW,W,NW,C'
+
+var a={0,1,2,3,4,5,6}
+var b={0,1,2,3,4,5,6}
+var c={0,1,2,3,4,5,6}
+var d={0,1,2,3,4,5,6}
+var e={0,1,2,3,4,5,6}
+var f={0,1,2,3,4,5,6}
+var g={0,1,2,3,4,5,6}
+var h={2,3}
+var i={1,4,5,6}
+var j={0,1,4,5,6}
+var k={0,1,4,5,6}
+var l={0,1,4,5,6}
+var m={0,2,3}
+var n={0,1,2,3,4,6}
+
+# Water spreads down or sideways.
+0,h,a,b,c,n,e,f,g,2
+0,a,b,h,i,n,d,e,f,2
+
+# Water dries up if not replenished.
+2,j,a,k,b,n,d,l,e,0
+2,j,a,b,m,n,d,k,e,0
+2,j,a,b,m,n,m,d,e,0
+
+# Gates rise if there is water below them.
+4,a,b,c,d,h,e,f,g,5
+m,a,b,c,d,5,e,f,g,6
+
+# Gates lower is there is no water below them.
+5,a,b,c,d,j,e,f,g,4
+6,a,b,c,d,n,e,f,g,0
+
+@NAMES
+
+0 empty
+1 wall
+2 water
+3 spout
+4 inactive gate
+5 active gate
+6 gate wall
+
+@COLORS
+
+0 255 255 255   white
+1   0   0   0   black
+2   0 128 255   light blue
+3   0   0 255   blue
+4 255   0   0   red
+5 255 128   0   orange
+6 255 128   0   orange
+
+
